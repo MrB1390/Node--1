@@ -13,15 +13,15 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/write', (req,res)=>{
-    const today = format(new Date(), 'dd-mm-yyyy-HH-mm');
-    const timeVal = format(new Date(), 'dd-mm-yyyy-HH-mm-ss');
+    const today = format(new Date(), 'dd-MM-yyyy-HH-mm');
+    const timeVal = format(new Date(), 'dd-MM-yyyy-HH-mm-ss');
     const filePath = `TimeStamp/${today}.txt`
     fs.writeFileSync(filePath, `Current Date and Time ${timeVal}` , 'utf8')
     res.status(200).send("File written successfully")
 })
 
 app.get('/read',(req,res) => {
-  const today = format(new Date(), 'dd-mm-yyyy-HH-mm');
+  const today = format(new Date(), 'dd-MM-yyyy-HH-mm');
   const filePath = `TimeStamp/${today}.txt`
   let data = fs.readFileSync(filePath, 'utf-8')
   res.status(200).send(data)
